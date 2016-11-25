@@ -1,5 +1,5 @@
 __all__ = [
-    'ForumPost'
+    'ForumPost',
 ]
 
 class ForumPost(object):

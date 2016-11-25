@@ -1,5 +1,5 @@
 __all__ = [
-    'comment',
+    'Comment',
 ]
 
 class Comment(object):

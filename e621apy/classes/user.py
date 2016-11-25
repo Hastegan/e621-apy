@@ -1,5 +1,5 @@
 __all__ = [
-    'user',
+    'User',
 ]
 
 class User(object):
