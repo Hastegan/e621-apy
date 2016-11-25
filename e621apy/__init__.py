@@ -15,6 +15,8 @@ __copyright__ = 'Copyright (c) 2016 Hastegan'
 
 VERSION = __version__
 
+from .core.search import SearchPost
+
 from .classes.post import Post
 from .classes.tag import Tag
 from .classes.pool import Pool
