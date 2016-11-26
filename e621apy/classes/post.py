@@ -1,11 +1,21 @@
+"""
+Contains the Post class
+"""
+
 __all__ = [
     'Post',
 ]
 
 class Post(object):
+    """
+    Represents a post
+    """
 
     def __init__(self):
-        self.id = 0
+        """
+        Initiate properties
+        """
+        self.identifier = 0
         self.tags = ''
         self.description = ''
         self.created_at = ''

@@ -1,11 +1,21 @@
+"""
+Contains the Comment class
+"""
+
 __all__ = [
     'Comment',
 ]
 
 class Comment(object):
+    """
+    Represents a comment
+    """
 
     def __init__(self):
-        self.id = 0
+        """
+        Initiate properties
+        """
+        self.identifier = 0
         self.created_at = ''
         self.post_id = 0
         self.creator = ''

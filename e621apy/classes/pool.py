@@ -1,11 +1,21 @@
+"""
+Contains the Pool class
+"""
+
 __all__ = [
     'Pool',
 ]
 
 class Pool(object):
+    """
+    Represents a pool
+    """
 
     def __init__(self):
-        self.id = 0
+        """
+        Initiate properties
+        """
+        self.identifier = 0
         self.name = ''
         self.created_at = ''
         self.updated_at = ''

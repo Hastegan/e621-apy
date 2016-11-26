@@ -1,26 +1,38 @@
-def _add_tag(tags, tag):
-    tag = _clean_tag(tag)
+"""
+    Helper functions frequently used by the module's classes
+"""
 
-    if ':' not in tag:
-        tags.append(tag)
-        return tags
 
-    parts = tag.split(':')
-    if len(parts) != 2:
-        return tags
+def add_tag(tags, tag):
+    """
+    Add a tag to a given tag list
+    """
 
-    key = parts[0]
-    value = parts[1]
+    # Format tag to e621 standards
+    tag = clean_tag(tag)
 
-    for i in range(len(tags)):
-        if key in tags[i]:
+    # Retrieve the tag 'key' if any
+    key = None
+    if ':' in tag:
+        key = tag.split(':')[0]
+        key = '%s:' % key
+
+    for i, item in enumerate(tags):
+        # Look for simple duplicates
+        if item == tag:
+            return tags
+
+        # Look for key duplicates
+        if key and key in item:
             tags[i] = tag
             return tags
 
     tags.append(tag)
     return tags
 
-
-def _clean_tag(tag):
+def clean_tag(tag):
+    """
+    Format tag to match e621 format
+    """
     tag = tag.replace(' ', '_')
     return tag

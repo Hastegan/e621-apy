@@ -1,11 +1,21 @@
+"""
+Contains the Set class
+"""
+
 __all__ = [
     'Set',
 ]
 
 class Set(object):
+    """
+    Represent a set
+    """
 
     def __init__(self):
-        self.id = ''
+        """
+        Initiate properties
+        """
+        self.identifier = ''
         self.name = ''
         self.shortname = ''
         self.description = ''

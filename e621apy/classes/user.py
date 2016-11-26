@@ -1,8 +1,15 @@
+"""
+Contains the User class
+"""
+
 __all__ = [
     'User',
 ]
 
 class User(object):
+    """
+    Represents a user
+    """
 
     LEVEL_LABELS = {
         10: 'blocked',
@@ -15,7 +22,10 @@ class User(object):
     }
 
     def __init__(self):
-        self.id = 0
+        """
+        Initiate properties
+        """
+        self.identifier = 0
         self.name = ''
         self.level = 10
         self.created_at = ''
@@ -38,4 +48,7 @@ class User(object):
         self.artist_tag = []
 
     def get_level_label(self):
+        """
+        Return the user level label
+        """
         return User.LEVEL_LABELS[self.level]
