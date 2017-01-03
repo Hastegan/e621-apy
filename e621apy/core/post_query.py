@@ -73,16 +73,6 @@ class PostQuery(Query):
         self._add_tags(*tags)
         return self
 
-    def species(self, *species):
-        """
-        Add species tags
-
-        There is no difference between species tags and general tags in
-        searches
-        """
-        self._add_tags(*species)
-        return self
-
     def sort(self, key, asc=False):
         """
         Add a sorting tag
