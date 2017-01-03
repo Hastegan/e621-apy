@@ -18,7 +18,7 @@ class PostQuery(Query):
     RATING_EXPLICIT = 'explicit'
     RATING_ALL = 'all'
 
-    def __init__(self, limit=320, page=1, tags=None, rating=RATING_SAFE):
+    def __init__(self, limit=75, page=1, tags=None, rating=RATING_SAFE):
         """
         Initiate properties and add the rating tag
         """
