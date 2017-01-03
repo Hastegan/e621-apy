@@ -23,3 +23,9 @@ class Pool(object):
         self.is_locked = False
         self.post_count = 0
         self.description = ''
+
+    def __str__(self):
+        """
+        String representation of the object
+        """
+        return 'Pool<{}>'.format(self.identifier)

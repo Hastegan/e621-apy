@@ -52,3 +52,9 @@ class User(object):
         Return the user level label
         """
         return User.LEVEL_LABELS[self.level]
+
+    def __str__(self):
+        """
+        String representation of the object
+        """
+        return 'User<{}>'.format(self.identifier)

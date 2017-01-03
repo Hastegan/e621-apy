@@ -21,3 +21,9 @@ class ForumPost(object):
         self.creator_id = 0
         self.title = ''
         self.body = ''
+
+    def __str__(self):
+        """
+        String representation of the object
+        """
+        return 'ForumPost<{}>'.format(self.identifier)

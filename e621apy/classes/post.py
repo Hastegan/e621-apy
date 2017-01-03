@@ -47,3 +47,9 @@ class Post(object):
         self.artist = []
         self.sources = []
         self.delreason = ''
+
+    def __str__(self):
+        """
+        String reprensentation of a Post
+        """
+        return 'Post<{}>'.format(self.identifier)

@@ -25,3 +25,9 @@ class Set(object):
         self.public = True
         self.transfert_to_parent_on_delete = True
         self.uesr_id = 0
+
+    def __str__(self):
+        """
+        String representation of the object
+        """
+        return 'Set<{}>'.format(self.identifier)

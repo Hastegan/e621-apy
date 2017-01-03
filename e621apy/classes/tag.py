@@ -33,3 +33,9 @@ class Tag(object):
         Return the tag type label
         """
         return Tag.TYPES[self.type]
+
+    def __str__(self):
+        """
+        String representation of the object
+        """
+        return 'Tag<{}>'.format(self.identifier)

@@ -23,3 +23,9 @@ class Artist(object):
         self.is_active = False
         self.version = 0
         self.updater_id = 0
+
+    def __str__(self):
+        """
+        String representation of the object
+        """
+        return 'Artist<{}>'.format(self.identifier)

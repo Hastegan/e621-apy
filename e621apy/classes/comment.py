@@ -22,3 +22,9 @@ class Comment(object):
         self.creator_id = 0
         self.body = ''
         self.score = 0
+
+    def __str__(self):
+        """
+        String representation of the object
+        """
+        return 'Comment<{}>'.format(self.identifier)
