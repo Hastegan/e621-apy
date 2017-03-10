@@ -6,6 +6,8 @@ __all__ = [
     'Search',
 ]
 
+from e621apy import Call
+
 class Search(object):
     """
     Performs the actual transaction with the e621 API
@@ -16,10 +18,19 @@ class Search(object):
         Initiate properties
         """
         self._query = query
+        self._posts = Call(query).get_posts()
         self._count = 0
 
-    def _execute_query(self):
+        self.counter = 0
+
+    def __iter__(self):
         """
-        Perform API call and treat the response
+        Iterator
         """
-        pass
+        return self
+
+    def __next__(self):
+        if self._count < len(self._posts):
+            self._count += 1
+            return self._posts[self._count - 1]
+        raise StopIteration

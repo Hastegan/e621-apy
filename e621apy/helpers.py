@@ -2,7 +2,6 @@
     Helper functions frequently used by the module's classes
 """
 
-
 def add_tag(tags, tag):
     """
     Add a tag to a given tag list
