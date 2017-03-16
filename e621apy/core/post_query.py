@@ -73,7 +73,7 @@ class PostQuery(Query):
         self._add_tags(*tags)
         return self
 
-    def sort(self, key, asc=False):
+    def sort(self, key, asc=True):
         """
         Add a sorting tag
         """
