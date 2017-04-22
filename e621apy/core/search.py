@@ -21,7 +21,10 @@ class Search(object):
         self._posts = Call(query).get_posts()
         self._count = 0
 
-        self.counter = 0
+    def first(self):
+        if len(self._posts):
+            return self._posts[0]
+        return None
 
     def __iter__(self):
         """

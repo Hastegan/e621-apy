@@ -46,7 +46,6 @@ class Call(object):
 
         return response.json()
 
-
     def get_posts(self):
         """
         Return an array of Post

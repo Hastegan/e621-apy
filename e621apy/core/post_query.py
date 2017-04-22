@@ -22,6 +22,9 @@ class PostQuery(Query):
         """
         Initiate properties and add the rating tag
         """
+
+        Query.__init__(self)
+
         self._limit = limit
         self.page = page
         self._tags = tags
@@ -52,6 +55,7 @@ class PostQuery(Query):
         Add an id tag
         """
         self._add_tags('id:%i' % identifier)
+        self._unique_mode = True
 
     def _set_rating(self, rating):
         """
