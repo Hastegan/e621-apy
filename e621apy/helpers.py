@@ -15,14 +15,16 @@ def add_tag(tags, tag):
     if ':' in tag:
         key = tag.split(':')[0]
         key = '%s:' % key
+        cleaned_key = clean_key(key)
 
     for i, item in enumerate(tags):
         # Look for simple duplicates
         if item == tag:
             return tags
 
+
         # Look for key duplicates
-        if key and (key in item or "-%s" % key in item):
+        if key and (key in item or cleaned_key in item):
             tags[i] = tag
             return tags
 
@@ -35,3 +37,14 @@ def clean_tag(tag):
     """
     tag = tag.replace(' ', '_')
     return tag
+
+def clean_key(key):
+    """
+    Clean up a tag key
+    """
+    key = key.replace(':', '')
+
+    if len(key) >= 1 and key[0] == '-':
+        key = key[1:]
+
+    return key
