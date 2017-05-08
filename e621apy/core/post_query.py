@@ -31,7 +31,7 @@ class PostQuery(Query):
 
         if self._tags is None:
             self._tags = []
-        self._set_rating(rating)
+        self.rating(rating)
 
     def _add_tags(self, *tags):
         """
@@ -57,17 +57,20 @@ class PostQuery(Query):
         self._add_tags('id:%i' % identifier)
         self._unique_mode = True
 
-    def _set_rating(self, rating):
+    def _set_rating(self, rating, remove):
         """
         Add the rating tag
         """
-        self._add_tags('rating:%s' % rating)
+        if remove:
+            self._add_tags('-rating:%s' % rating)
+        else:
+            self._add_tags('rating:%s' % rating)
 
-    def rating(self, rating):
+    def rating(self, rating, remove=False):
         """
         Set the rating
         """
-        self._set_rating(rating)
+        self._set_rating(rating, remove)
         return self
 
     def tags(self, *tags):

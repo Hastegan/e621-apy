@@ -22,7 +22,7 @@ def add_tag(tags, tag):
             return tags
 
         # Look for key duplicates
-        if key and key in item:
+        if key and (key in item or "-%s" % key in item):
             tags[i] = tag
             return tags
 
