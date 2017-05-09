@@ -33,6 +33,16 @@ class PostQuery(Query):
             self._tags = []
         self.rating(rating)
 
+    def enable_unique_mode(self):
+        """
+        Set the query in unique mode, prepated to get only one result
+        """
+        self._unique_mode = True
+
+        self._tags = []
+        self.page = 1
+        self._limit = 1
+
     def _add_tags(self, *tags):
         """
         Add some tags to the object's list
@@ -49,13 +59,6 @@ class PostQuery(Query):
             sort = '_desc'
 
         self._add_tags('order:%s%s' % (key, sort))
-
-    def _set_id(self, identifier):
-        """
-        Add an id tag
-        """
-        self._add_tags('id:%i' % identifier)
-        self._unique_mode = True
 
     def _set_rating(self, rating, remove):
         """
@@ -78,6 +81,41 @@ class PostQuery(Query):
         Add new tags
         """
         self._add_tags(*tags)
+        return self
+
+    def pool(self, pool):
+        """
+        Add the pool tag
+        """
+        self._add_tags("pool:%s" % pool)
+        return self
+
+    def set(self, set):
+        """
+        Add the set tag
+        """
+        self._add_tags("set:%s" % set)
+        return self
+
+    def has_source(self, has_source=True):
+        """
+        Set if posts must have a source or not
+        """
+        self._add_tags("hassource:%s" % has_source)
+        return self
+
+    def has_description(self, has_description=True):
+        """
+        Set if posts must have a description or not
+        """
+        self._add_tags("hasdescription:%s" % has_description)
+        return self
+
+    def is_in_pool(self, is_in_pool=True):
+        """
+        Set if posts must be in a poll or not
+        """
+        self._add_tags("inpool:%s" % is_in_pool)
         return self
 
     def sort(self, key, asc=True):
@@ -105,14 +143,20 @@ class PostQuery(Query):
 
     def get(self, identifier):
         """
-        Override all tags and rating to search only with an id
+        Override all tags and ratings to search only with an id
         """
-        self._tags = []
-        self.page = 1
-        self._limit = 1
-        self.rating(PostQuery.RATING_ALL)
+        self.enable_unique_mode()
+        self._add_tags("id:%s" % identifier)
 
-        self._set_id(identifier)
+        return self
+
+    def md5(self, md5):
+        """
+        Override all tags and ratings to search only with a md5
+        """
+        self.enable_unique_mode()
+
+        self._add_tags("md5:%s" % md5)
 
         return self
 
