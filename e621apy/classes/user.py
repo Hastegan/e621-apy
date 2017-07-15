@@ -15,7 +15,7 @@ class User(object):
         10: 'blocked',
         20: 'member',
         30: 'privileged',
-        33: 'contributot',
+        33: 'contributor',
         35: 'janitor',
         40: 'mod',
         50: 'admin',

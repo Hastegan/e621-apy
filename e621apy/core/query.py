@@ -4,4 +4,4 @@ __all__ = [
 
 class Query(object):
     def __init__(self):
-        self._unique_mode = False
+        self.unique_mode = False

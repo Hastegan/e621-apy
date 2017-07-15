@@ -22,6 +22,19 @@ class HelpersTestCase(unittest.TestCase):
         clean_tag = tools.clean_tag(dirty_tag)
         self.assertEqual(clean_tag, expected)
 
+    def test_clean_key(self):
+        """
+            Test if a tag key is correctly cleaned
+        """
+
+        expected = {
+            '-pony': 'pony',
+            '-rating:': 'rating'
+        }
+
+        for key_in, key_out in expected.items():
+            self.assertEqual(tools.clean_key(key_in), key_out)
+
     def test_add_tag_simple_duplicate(self):
         """
             Test if adding a same new simple tag is not making duplicates
@@ -47,10 +60,10 @@ class HelpersTestCase(unittest.TestCase):
 
         expected = [
             'hi_res',
-            'rating:questionable',
+            '-rating:questionable',
         ]
 
-        result = tools.add_tag(initial_tags, 'rating:questionable')
+        result = tools.add_tag(initial_tags, '-rating:questionable')
         self.assertCountEqual(result, expected, 'Complex tag duplicate')
 
 if __name__ == '__main__':

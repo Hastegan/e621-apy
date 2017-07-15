@@ -26,7 +26,7 @@ class PostQuery(Query):
         Query.__init__(self)
 
         self._limit = limit
-        self.page = page
+        self._page = page
         self._tags = tags
 
         if self._tags is None:
@@ -35,9 +35,9 @@ class PostQuery(Query):
 
     def enable_unique_mode(self):
         """
-        Set the query in unique mode, prepated to get only one result
+        Set the query in unique mode, prepared to get only one result
         """
-        self._unique_mode = True
+        self.unique_mode = True
 
         self._tags = []
         self.page = 1
@@ -137,7 +137,7 @@ class PostQuery(Query):
         """
         Add the page
         """
-        self.page = page
+        self._page = page
 
         return self
 
@@ -160,13 +160,22 @@ class PostQuery(Query):
 
         return self
 
+    def get_page(self):
+        return self._page
+
+    def get_limit(self):
+        return self._limit
+
+    def get_tags(self):
+        return self._tags
+
     def get_url_params(self):
         """
-        Return a dictionnary of the url params
+        Return a dictionary of the url parameters
         """
         params = {
             'limit': self._limit,
-            'page': self.page,
+            'page': self._page,
             'tags': '',
         }
 
@@ -180,4 +189,4 @@ class PostQuery(Query):
         """
         String representation with tags
         """
-        return 'PostQuery: %s' % self._tags
+        return "PostQuery: {}, page {}, limit {}".format(self._tags, self._page, self._limit)

@@ -66,7 +66,7 @@ q = PostQuery().tags('equine').sort('score', False) # Descending
 ```
 
 ### Filters
-Filters are used to add more criterias. The currently implemented filters are `has_source()`, `has_description()` and `is_in_pool()`.
+Filters are used to add more criteria. The currently implemented filters are `has_source()`, `has_description()` and `is_in_pool()`.
 ```python
 q = PostQuery().has_source(True|False)
 q = PostQuery().has_description(True|False)
@@ -77,7 +77,7 @@ q = PostQuery().is_in_pool(True|False)
 The `pool()` method is used to get posts inside a pool, the parameter is a pool id or a **pool name**.
 ```python
 q = PostQuery().pool(4)
-q = PostQuery().pool("The quick brown fow jumps, Chapter: 2")
+q = PostQuery().pool("The quick brown fox jumps, Chapter: 2")
 ```
 The `set()` method is used to get posts inside a set, the parameter is a set id or the a **set short name**
 ```python
@@ -89,5 +89,5 @@ An easy way to test the package is done with the `nose` python package. Just run
 ```
 nosetests
 ```
-## Development progess
+## Development progress
 See what is going on the [kanban](https://trello.com/b/0ERpDeyo/e621-apy).

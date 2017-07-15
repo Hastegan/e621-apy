@@ -50,6 +50,6 @@ class Post(object):
 
     def __str__(self):
         """
-        String reprensentation of a Post
+        String representation of a Post
         """
         return 'Post<{}>'.format(self.identifier)
