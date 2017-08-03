@@ -40,7 +40,7 @@ class PostQuery(Query):
         self.unique_mode = True
 
         self._tags = []
-        self.page = 1
+        self._page = 1
         self._limit = 1
 
     def _add_tags(self, *tags):

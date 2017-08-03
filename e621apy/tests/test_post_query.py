@@ -71,17 +71,22 @@ class PostQueryTestCase(unittest.TestCase):
         """
             Test if enabling the unique mode sets the correct values
         """
-        expected_query = {
+        expected = {
             'tags': '',
             'limit': 1,
             'page': 1,
         }
 
-        q = PostQuery().tags('dummy tag')
+        expected_tag_array = []
+
+        q = PostQuery().tags('dummy tag').page(2)
         q.enable_unique_mode()
 
         self.assertTrue(q.unique_mode)
-        self.assertEqual(expected_query, q.get_url_params())
+        self.assertEqual(expected["page"], q.get_page())
+        self.assertEqual(expected["limit"], q.get_limit())
+        self.assertEqual(expected_tag_array, q.get_tags())
+        self.assertEqual(expected, q.get_url_params())
 
     def test_get(self):
         """
