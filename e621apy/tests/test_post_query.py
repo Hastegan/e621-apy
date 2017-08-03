@@ -178,5 +178,22 @@ class PostQueryTestCase(unittest.TestCase):
         for tag in expected_tags:
             self.assertIn(tag, tags)
 
+    def test_nextPage(self):
+        """
+            Test if next_page exists
+        """
+        self.assertTrue("next_page" in dir(PostQuery))
+
+    def test_nextPageSetsCorrectPage(self):
+        """
+        Test if next_page sets the expected page number
+        """
+        expected_page = 2
+
+        q = PostQuery()
+        q.next_page()
+
+        self.assertEqual(q.get_page(), expected_page)
+
 if __name__ == '__main__':
     unittest.main()

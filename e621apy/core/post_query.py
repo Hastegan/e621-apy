@@ -160,6 +160,14 @@ class PostQuery(Query):
 
         return self
 
+    def next_page(self):
+        """
+        Set the postQuery to get the next page
+        """
+        self._page += 1
+
+        return self
+
     def get_page(self):
         return self._page
 

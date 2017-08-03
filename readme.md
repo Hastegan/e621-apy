@@ -14,7 +14,7 @@ q = PostQuery().tags('equine')
 ```
 With multiple tags:
 ```python
-q = PostQuery().tags('equine', 'dog')
+q = PostQuery().tags('equine', 'male')
 ```
 Get the results:
 ```python
@@ -30,6 +30,28 @@ The page to look for can be set with the `page()` method while the number of pos
 ```python
 # Theses are actually the default settings
 q = PostQuery().page(1).limit(75)
+```
+### Loop through pages
+The `next_page()` method is used to increment the page used in the Query.f
+```python
+q = PostQuery().tags('atryl')
+
+while True:
+    posts = Search(q).get_all()
+    if not len(posts):
+        break
+    print("Page {} : {} posts".format(q.get_page(), len(posts)))
+    q.next_page()
+
+```
+This example will output something like below.
+```
+Page 1 : 75 posts
+Page 2 : 75 posts
+Page 3 : 75 posts
+Page 4 : 75 posts
+Page 5 : 75 posts
+Page 6 : 8 posts
 ```
 
 ### Get a post by id or by md5
@@ -53,7 +75,7 @@ q = PostQuery().tags('equine').rating(PostQuery.RATING_ALL)
 ```
 There are four ratings available, `RATING_SAFE`, `RATING_QUESTIONABLE`, `RATING_EXPLICIT` and `RATING_ALL`.
 
-It is not possible to cumulate two ratings, but do not worry, since only three are possible, removing one of them will have the same result as cumulating the two remaining. A second argument is provided to do it.
+It is not possible to cumulate two ratings, since only three are possible, removing one of them will have the same result as cumulating the two remaining. Passing `True` as the second argument will do so.
 ```python
 q = PostQuery().tags('equine').rating(PostQuery.RATING_EXPLICIT, True)
 ```
