@@ -2,6 +2,8 @@
 Contains the Call class
 """
 
+import os
+
 from requests import get, codes as httpstatus
 
 from e621apy import helpers
@@ -17,10 +19,9 @@ class Call(object):
     Call communicates with the e621 API
     """
 
-    base_url = 'https://e621.net/'
-    path = {
-        'post': 'post/index.json'
-    }
+    api_root = 'https://e621.net/'
+    post_root = 'post/index.json'
+    user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'
 
     def __init__(self, query):
         """
@@ -37,7 +38,7 @@ class Call(object):
         Execute the current query
         """
         params = self._query.get_url_params()
-        data = self._request(Call.base_url+Call.path['post'], params)
+        data = self._request(Call.api_root+Call.post_root, params)
 
         self.content = data
 
@@ -52,10 +53,14 @@ class Call(object):
         """
         Send a request to the API and handle its answer
         """
-        response = get(url, params = params)
+
+        headers = {
+            'User-Agent': self.user_agent
+        }
+        response = get(url, params=params, headers=headers)
 
         if response.status_code is not httpstatus.ok:
-            raise Except(response.code)
+            raise Exception(response.status_code)
 
         return response.json()
 
