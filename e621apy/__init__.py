@@ -24,19 +24,20 @@ d888 '88%" 98888N  '888N        d8888*`     88888
                                                          '8>             ./"
                                                           "             """
 
-from .classes.post import Post
-from .classes.tag import Tag
-from .classes.pool import Pool
-from .classes.set import Set
-from .classes.comment import Comment
-from .classes.artist import Artist
-from .classes.user import User
-from .classes.forum_post import ForumPost
+from .classes.Post import Post
+from .classes.Tag import Tag
+from .classes.Pool import Pool
+from .classes.Set import Set
+from .classes.Comment import Comment
+from .classes.Artist import Artist
+from .classes.User import User
+from .classes.ForumPost import ForumPost
 
-from .core.query import Query
-from .core.post_query import PostQuery
-from .core.call import Call
-from .core.search import Search
+from .core.Query import Query
+from .core.PostQuery import PostQuery
+from .core.Parser import Parser
+from .core.Call import Call
+from .core.Search import Search
 
 
 __title__ = 'e621apy'
@@ -50,7 +51,9 @@ VERSION = __version__
 __all__ = [
     'Query',
     'PostQuery',
+    'Call',
     'Search',
+    'Parser',
     'Post',
     'Tag',
     'Pool',

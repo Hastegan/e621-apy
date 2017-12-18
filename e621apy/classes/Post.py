@@ -53,3 +53,6 @@ class Post(object):
         String representation of a Post
         """
         return 'Post<{}>'.format(self.identifier)
+
+    def __eq__(self, other):
+        return (self.identifier == other.identifier)

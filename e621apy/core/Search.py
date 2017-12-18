@@ -22,11 +22,17 @@ class Search(object):
         self._count = 0
 
     def first(self):
+        """
+        Return first element of result
+        """
         if len(self._content):
             return self._content[0]
         return None
 
     def get_all(self):
+        """
+        Return all results
+        """
         return self._content
 
     def __iter__(self):
